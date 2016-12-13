@@ -14,11 +14,11 @@ function Article (opts) {
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
   $newArticle.attr('data-category', this.category);
-  $newArticle.attr('data-author name', this.author);
-  $newArticle.attr('data-author URL', this.authorURL);
-  $newArticle.attr('data-title', this.title);
-  $newArticle.attr('data-body', this.body);
-  $newArticle.attr('data-publication date', this.publishedOn);
+  $newArticle.text('a', this.author);
+  $newArticle.attr('href', this.authorUrl);
+  $newArticle.text('h1', this.title);
+  $newArticle.text('article-body', this.body);
+  $newArticle.attr('datetime', this.publishedOn);
 
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
